@@ -1,15 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.OpenApi.Models;
 using System.Reflection;
-using System.Linq;
 using BlazorExperience.Api.Configuration;
 using BlazorExperience.Services;
 
@@ -38,7 +28,7 @@ namespace BlazorExperience.Api
             Configuration.Bind(SwaggerGenOptions.CONFIG_KEY, swaggerConfig);
 
             services.Configure<ApiSettings>(Configuration.GetSection(ApiSettings.CONFIG_KEY));
-            services.Configure<ApiSettings>(Configuration.GetSection(AuthSettings.CONFIG_KEY));
+            services.Configure<AuthSettings>(Configuration.GetSection(AuthSettings.CONFIG_KEY));
 
             services.AddBusinessServices(Configuration);
             AddAutoMapper(services);
@@ -60,21 +50,9 @@ namespace BlazorExperience.Api
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc(API_CODE, new OpenApiInfo { Title = swaggerConfig.SwaggerDoc.Title, Version = swaggerConfig.SwaggerDoc.Version });
-                c.AddSecurityDefinition(swaggerConfig.SecurityDefinition.Name, new OpenApiSecurityScheme()
-                {
-                    Type = SecuritySchemeType.OAuth2,
-                    Flows = new OpenApiOAuthFlows
-                    {
-                        AuthorizationCode = new OpenApiOAuthFlow
-                        {
-                            AuthorizationUrl = new Uri(swaggerConfig.SecurityDefinition.Authorisation.Url),
-                            TokenUrl = new Uri(swaggerConfig.SecurityDefinition.Authorisation.TokenUrl),
-                            Scopes = swaggerConfig.SecurityDefinition.Authorisation.Scopes
-                        }
-                    }
-                });
                 c.EnableAnnotations();
+                c.DescribeAllParametersInCamelCase();
+                c.SwaggerDoc(API_CODE, new OpenApiInfo { Title = swaggerConfig.SwaggerDoc.Title, Version = swaggerConfig.SwaggerDoc.Version });
             });
         }
 
@@ -83,16 +61,13 @@ namespace BlazorExperience.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
                 app.UseSwagger();
                 app.UseSwaggerUI(c =>
                 {
-                    c.RoutePrefix = "api-docs";
+                    c.RoutePrefix = "swagger";
                     c.DocumentTitle = "Blazor Exp API Documentation";
                     c.SwaggerEndpoint($"/swagger/{API_CODE}/swagger.json", "Blazor EXP API v1");
-
-                    c.OAuthClientId("blazorexp-api-swagger");
-                    c.OAuthAppName("Blazor Exp API Swagger UI");
-                    c.OAuthUsePkce();
                 });
             }
 
@@ -114,7 +89,8 @@ namespace BlazorExperience.Api
             var mappingProfiles = websiteAssembly.DefinedTypes
                 .Where(ti => ti.Name.EndsWith("MappingProfile"))
                 .Select(ti => ti.AsType()).ToArray();
-            
+
+            services.AddAutoMapper(mappingProfiles);
         }
     }
 }

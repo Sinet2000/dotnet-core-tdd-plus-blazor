@@ -7,9 +7,6 @@ namespace BlazorExperience.Api.Endpoints.Book
 {
     public class GetBookByIdRequest
     {
-        public const string Route = "/Books/{BookId:long}";
-        public static string BuildRoute(long bookId) => Route.Replace("{BookId:long}", bookId.ToString());
-
-        public int BookId { get; set; }
+        public const string Route = "/Books/{bookId:long}";
     }
 }

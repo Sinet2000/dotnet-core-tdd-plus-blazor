@@ -1,9 +1,63 @@
 ﻿@page "/"
+@using BlazorExperience.Shared.ViewModels.Book
+@using BlazorExperience.Shared.ViewModels.Film
+@inherits ComponentBase
 
-<PageTitle>Index</PageTitle>
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" id="defaultCheck1" @bind="_isBooksSelected">
+    <label class="form-check-label" for="defaultCheck1">
+        @_isBooksSelected
+    </label>
+</div>
+<div class="row">
+    <div class="col">
+        <button class="btn btn-primary" @onclick="RetrieveData">Retrieve data</button>
+    </div>
+</div>
+<DataGridComponent TItem="BookDatatableViewModel"
+                   DataItems="_books"
+                   Columns="_columnDefinitions"></DataGridComponent>
 
-<h1>Hello, world!</h1>
+@code
+{
+    [Inject]
+    private IBookService _bookService { get; set; }
+    [Inject]
+    private IFilmService _filmService { get; set; }
 
-Welcome to your new app.
+    private List<BookDatatableViewModel> _books;
+    private List<FilmDatatableViewModel> _films;
+    private List<ColumnDefinition> _columnDefinitions;
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+    private bool _isBooksSelected { get; set; } = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Initialize();
+
+        _books = await _bookService.GetDashboardData();
+
+        await base.OnInitializedAsync();
+    }
+
+    private void Initialize()
+    {
+        if (_columnDefinitions == null)
+        {
+            _columnDefinitions = new List<ColumnDefinition>();
+            _columnDefinitions.AddRange(
+                new ColumnDefinition[] {
+                        new ColumnDefinition {DataField = "Title", Caption = "Title", Alingment = Alingment.Center},
+                        new ColumnDefinition {DataField = "Author", Caption = "Author"},
+                        new ColumnDefinition {DataField = "Description", Caption = "Description"}
+
+                        }
+                );
+        }
+    }
+
+    private async Task RetrieveData()
+    {
+
+    }
+}

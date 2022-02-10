@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32106.194
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{75F9A0A1-3E88-434C-9E30-4FA119528954}"
 EndProject
@@ -11,21 +11,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorExperience.Api", "src
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{099BAC49-D8EB-4EEF-BDFD-58D03B540AA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorExperience.ClientApp", "src\app\BlazorExperience.ClientApp\BlazorExperience.ClientApp.csproj", "{C4B1D48B-29BC-436D-A6DC-C2513E3DF05A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorExperience.ClientApp", "src\app\BlazorExperience.ClientApp\BlazorExperience.ClientApp.csproj", "{C4B1D48B-29BC-436D-A6DC-C2513E3DF05A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{12D901BA-0EAA-4E21-A598-6A4FAE78DB0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorExperience.Api.Tests", "tests\BlazorExperience.Api.Tests\BlazorExperience.Api.Tests.csproj", "{F10EA2AF-959D-407E-B6A3-0D6D0C763DFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorExperience.Api.Tests", "tests\BlazorExperience.Api.Tests\BlazorExperience.Api.Tests.csproj", "{F10EA2AF-959D-407E-B6A3-0D6D0C763DFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorExperience.Core", "src\api\BlazorExperience.Core\BlazorExperience.Core.csproj", "{3D67501F-E198-403B-BAB8-98106F419D30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorExperience.Core", "src\api\BlazorExperience.Core\BlazorExperience.Core.csproj", "{3D67501F-E198-403B-BAB8-98106F419D30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorExperience.Data", "src\api\BlazorExperience.Data\BlazorExperience.Data.csproj", "{2A31DAD1-DCE9-4BFE-9F02-535793CBECD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorExperience.Data", "src\api\BlazorExperience.Data\BlazorExperience.Data.csproj", "{2A31DAD1-DCE9-4BFE-9F02-535793CBECD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorExperience.Services", "src\api\BlazorExperience.Services\BlazorExperience.Services.csproj", "{50702014-1721-4FA6-8517-AEBF2DB9D0BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorExperience.Services", "src\api\BlazorExperience.Services\BlazorExperience.Services.csproj", "{50702014-1721-4FA6-8517-AEBF2DB9D0BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorExperience.ClientApp.Services", "src\app\BlazorExperience.ClientApp.Services\BlazorExperience.ClientApp.Services.csproj", "{B49ED4EC-0802-4A84-A8A5-97517AF69EE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorExperience.ClientApp.Services", "src\app\BlazorExperience.ClientApp.Services\BlazorExperience.ClientApp.Services.csproj", "{B49ED4EC-0802-4A84-A8A5-97517AF69EE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorExperience.Shared", "src\BlazorExperience.Shared\BlazorExperience.Shared.csproj", "{B6D9C6A7-8CC8-4A4F-BB52-77954DE783D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorExperience.Shared", "src\BlazorExperience.Shared\BlazorExperience.Shared.csproj", "{B6D9C6A7-8CC8-4A4F-BB52-77954DE783D0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorExperience.ClientApp.Components", "src\app\BlazorExperience.ClientApp.Components\BlazorExperience.ClientApp.Components.csproj", "{E03CFCBE-21DB-497C-979C-BAADAEDEE0AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +67,10 @@ Global
 		{B6D9C6A7-8CC8-4A4F-BB52-77954DE783D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6D9C6A7-8CC8-4A4F-BB52-77954DE783D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6D9C6A7-8CC8-4A4F-BB52-77954DE783D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E03CFCBE-21DB-497C-979C-BAADAEDEE0AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E03CFCBE-21DB-497C-979C-BAADAEDEE0AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E03CFCBE-21DB-497C-979C-BAADAEDEE0AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E03CFCBE-21DB-497C-979C-BAADAEDEE0AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +86,7 @@ Global
 		{50702014-1721-4FA6-8517-AEBF2DB9D0BF} = {2DB42418-7B75-4825-891E-F6A50EC45462}
 		{B49ED4EC-0802-4A84-A8A5-97517AF69EE5} = {099BAC49-D8EB-4EEF-BDFD-58D03B540AA5}
 		{B6D9C6A7-8CC8-4A4F-BB52-77954DE783D0} = {75F9A0A1-3E88-434C-9E30-4FA119528954}
+		{E03CFCBE-21DB-497C-979C-BAADAEDEE0AF} = {099BAC49-D8EB-4EEF-BDFD-58D03B540AA5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0BDFC952-738B-4BF4-BA8B-5B4749D15932}

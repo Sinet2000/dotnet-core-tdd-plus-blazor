@@ -6,6 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>preview</LangVersion>
 	  <GenerateRuntimeConfigurationFiles>True</GenerateRuntimeConfigurationFiles>
+	  <ApplicationIcon />
+	  <OutputType>Exe</OutputType>
+	  <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>

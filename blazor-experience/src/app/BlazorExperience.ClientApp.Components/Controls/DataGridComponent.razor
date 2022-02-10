@@ -1,0 +1,48 @@
+﻿@typeparam TItem
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            @if (Columns == null || Columns.Count < 0)
+            {
+
+            }
+            else
+            {
+                foreach (var column in Columns)
+                {
+                    <th align="right">@column.Caption</th>
+                }
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in DataItems)
+        {
+            <tr>
+                @if (Columns != null)
+                {
+                    foreach (var col in Columns)
+                    {
+                        /*@*/if (col.Alingment != Alingment.NotSet)
+                        {
+                            <td align="@col.Alingment.ToString().ToLower()">@typeof(TItem).GetProperty(col.DataField).GetValue(item)</td>
+                        }
+                        else
+                        {
+                            <td>@typeof(TItem).GetProperty(col.DataField).GetValue(item)</td>
+                        }
+                    }
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    [Parameter]
+    public IReadOnlyCollection<TItem> DataItems { get; set; }
+
+    [Parameter]
+    public List<ColumnDefinition> Columns { get; set; }
+}

@@ -20,7 +20,7 @@ namespace BlazorExperience.Data
                     Title = "Managing Oneself",
                     Description =
                         "We live in an age of unprecedented opportunity: with ambition, drive, and talent, you can rise to the top of your chosen profession, regardless of where you started out...",
-                    Author = "Peter Ducker",
+                    Author = "Peter Ducker"
                 },
                 new Book()
                 {
@@ -28,7 +28,7 @@ namespace BlazorExperience.Data
                     Title = "Evolutionary Psychology",
                     Description =
                         "Evolutionary Psychology: The New Science of the Mind, 5th edition provides students with the conceptual tools of evolutionary psychology, and applies them to empirical research on the human mind...",
-                    Author = "David Buss",
+                    Author = "David Buss"
                 },
                 new Book()
                 {
@@ -56,7 +56,7 @@ namespace BlazorExperience.Data
                 }
             };
 
-            modelBuilder.Entity<Book>().HasData(_books);
+            modelBuilder.Entity<Book>().HasData(_books[0], _books[1], _books[2], _books[3], _books[4]);
         }
     }
 }

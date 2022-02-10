@@ -57,7 +57,7 @@ namespace BlazorExperience.Api.Tests
                     options.UseInMemoryDatabase(inMemoryCollectionName);
                 });
 
-                services.AddScoped<>
+               //  services.AddScoped<>
             });
         }
     }

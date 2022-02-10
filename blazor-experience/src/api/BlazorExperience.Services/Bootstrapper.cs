@@ -18,6 +18,7 @@ namespace BlazorExperience.Services
             services.AddDataServices(configuration);
 
             services.AddScoped<IBookService, BookService>();
+            services.AddScoped<IFilmService, FilmService>();
 
             return services;
         }

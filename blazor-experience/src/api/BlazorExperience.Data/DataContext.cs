@@ -16,6 +16,7 @@ namespace BlazorExperience.Data
         }
 
         public DbSet<Book> Books { get; set; }
+        public DbSet<Film> Films { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,6 +34,7 @@ namespace BlazorExperience.Data
         EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
 
         DbSet<Book> Books { get; set; }
+        DbSet<Film> Films { get; set; }
 
         int SaveChanges();
 

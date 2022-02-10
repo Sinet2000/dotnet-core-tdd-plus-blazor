@@ -12,9 +12,10 @@ using System.Threading.Tasks;
 namespace BlazorExperience.Api.Endpoints.Book
 {
     public class GetById : EndpointBaseAsync
-        .WithRequest<GetBookByIdRequest>
+        .WithRequest<long>
         .WithActionResult<BookViewModel>
     {
+
         private readonly IBookService _bookService;
         private readonly IMapper _mapper;
 
@@ -29,15 +30,13 @@ namespace BlazorExperience.Api.Endpoints.Book
             Summary = "Gets a single Book",
             Description = "Gets a single Book by Id",
             OperationId = "Books.GetById",
-            Tags = new[] { "BookEndpoints"}) 
+            Tags = new[] { "BookEndpoints" })
         ]
-        public override async Task<ActionResult<BookViewModel>> HandleAsync([FromRoute] GetBookByIdRequest request, CancellationToken cancellationToken)
+        public override async Task<ActionResult<BookViewModel>> HandleAsync([FromRoute] long bookId, CancellationToken cancellationToken)
         {
-            var book = await _bookService.GetByIdAsync(request.BookId);
+            var book = await _bookService.GetByIdAsync(bookId);
 
-            if (book == null) return NotFound();
-
-            return Ok(_mapper.Map<BookViewModel>(book));
+            return book == null ? NotFound() : Ok(_mapper.Map<BookViewModel>(book));
         }
     }
 }
